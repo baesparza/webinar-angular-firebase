@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "webinar-ea0c9": {
+      "hosting": {
+        "test-webinar": [
+          "webinar-ea0c9"
+        ]
+      }
+    }
+  }
+}

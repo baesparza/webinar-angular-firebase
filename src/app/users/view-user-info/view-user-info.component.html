@@ -1,36 +1,40 @@
-<header>
+<ng-container *ngIf="userObs | async as user">
+    <header>
 
-    <a routerLink="/usuarios" class="text-blue-700">
-        Regresar
-    </a>
-
-    <div class="flex items-end justify-between">
-        <h1 class="text-3xl font-semibold">
-            Bruno Esparza
-        </h1>
-
-        <a [routerLink]="['/usuarios', 789, 'tarea', 'nuevo']"
-            class="px-4 py-2 text-xs font-bold tracking-widest text-white uppercase bg-blue-600 rounded hover:bg-blue-800">
-            Nueva Tarea
+        <a routerLink="/usuarios" class="text-blue-700">
+            Regresar
         </a>
-    </div>
-</header>
 
-<div class="w-full h-1 my-2 bg-gray-400 rounded"></div>
+        <div class="flex items-end justify-between">
+            <h1 class="text-3xl font-semibold">
+                {{user.displayName}}
+            </h1>
 
-<div class="flex items-end justify-between py-4">
-    <div>
-        <h3 class="font-semibold ">
-            Terminar Webinar
-        </h3>
+            <a [routerLink]="['/usuarios', user.id, 'tarea', 'nuevo']"
+                class="px-4 py-2 text-xs font-bold tracking-widest text-white uppercase bg-blue-600 rounded hover:bg-blue-800">
+                Nueva Tarea
+            </a>
+        </div>
+    </header>
 
-        <p>
-            27/28/202020
-        </p>
-    </div>
+    <div class="w-full h-1 my-2 bg-gray-400 rounded"></div>
 
-    <a [routerLink]="['/usuarios',789, 'tarea',123, 'actualizar']"
-        class="px-4 py-2 text-xs font-bold tracking-widest text-white uppercase bg-blue-600 rounded hover:bg-blue-800">
-        Editar
-    </a>
-</div>
+    <ng-container *ngFor="let task of tasksObs|async">
+        <div class="flex items-end justify-between py-4">
+            <div>
+                <h3 class="font-semibold ">
+                    {{task.label}}
+                </h3>
+
+                <p>
+                    {{task.createAt?.toDate() | date}}
+                </p>
+            </div>
+
+            <a [routerLink]="['/usuarios',user.id, 'tarea',task.id, 'actualizar']"
+                class="px-4 py-2 text-xs font-bold tracking-widest text-white uppercase bg-blue-600 rounded hover:bg-blue-800">
+                Editar
+            </a>
+        </div>
+    </ng-container>
+</ng-container>

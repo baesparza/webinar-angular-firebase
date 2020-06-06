@@ -1,5 +1,4 @@
 <header>
-
     <a routerLink="/usuarios/987" class="text-blue-700">
         Regresar
     </a>
@@ -13,11 +12,11 @@
 
 <div class="w-full h-1 my-2 bg-gray-400 rounded"></div>
 
-<form>
+<form [formGroup]="newTaskForm" (ngSubmit)="save()">
     <label class="block mb-2 text-sm font-bold text-gray-700" for="description">
         Descripción
     </label>
-    <input
+    <input formControlName="label"
         class="w-full px-3 py-2 mb-4 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
         id="description" type="text" placeholder="Nueva Tarea">
 

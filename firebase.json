@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "test-webinar",
+      "public": "dist/test-webinar",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
